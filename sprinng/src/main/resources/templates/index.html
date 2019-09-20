@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>Category Manager</title>
+</head>
+<body>
+    <div align="Center">
+        <h1>Categoery List</h1>
+        <a href="new">Create New Category</a>
+        <br/><br/>
+        <div class="padding">
+            <table class="table table-striped padding">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Updated At</th>
+                    <th scope="col">Edit action</th>
+                    <th scope="col">Delete action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="category : ${categorylist}">
+                    <td class="row" th:text="${category.categoryId}"/>
+                    <td class="row" th:text="${category.name}"/>
+                    <td class="row" th:text="${category.lastUpdate}"/>
+                    <td class="row">
+                        <button class="btn btn-info" type="button" th:onclick="'window.location.href = \'/edit/' + ${category.categoryId} + '\''">Edit</button>
+                    </td>
+                    <td class="row">
+                        <button class="btn btn-danger" type="button"
+                                th:onclick="'window.location.href = \'/delete/' + ${category.categoryId} + '\''">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
